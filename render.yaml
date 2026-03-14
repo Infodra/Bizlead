@@ -1,0 +1,67 @@
+services:
+  - type: web
+    name: bizlead-backend
+    env: python
+    plan: starter
+    rootDir: places_lead_scraper
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    pythonVersion: "3.11"
+    healthCheckPath: /health
+
+    envVars:
+      # MongoDB (Atlas - already cloud hosted)
+      - key: MONGODB_URL
+        sync: false
+      - key: MONGODB_DB_NAME
+        value: bizlead
+
+      # Security
+      - key: SECRET_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: "60"
+
+      # Google Places API
+      - key: GOOGLE_PLACES_API_KEY
+        sync: false
+
+      # Razorpay Payment
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+
+      # Email (SMTP)
+      - key: SMTP_SERVER
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USERNAME
+        sync: false
+      - key: SMTP_PASSWORD
+        sync: false
+      - key: SMTP_FROM_EMAIL
+        sync: false
+
+      # Application
+      - key: APP_NAME
+        value: BizLead
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: "bizlead-backend.onrender.com,localhost"
+      - key: CORS_ORIGINS
+        value: "https://bizlead.infodra.ai,https://www.bizlead.infodra.ai"
+
+      # Subscription limits
+      - key: STARTER_PLAN_LEAD_LIMIT
+        value: "500"
+      - key: PROFESSIONAL_PLAN_LEAD_LIMIT
+        value: "2000"

@@ -1,0 +1,267 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0B1220;
+  --foreground: #F8FAFC;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --primary: #3B82F6;
+  --primary-light: #60A5FA;
+  --primary-dark: #2563EB;
+  --secondary: #06B6D4;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --info: #0EA5E9;
+  --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+}
+
+:root.light-mode {
+  --background: #FFFFFF;
+  --foreground: #1F2937;
+  --primary: #3B82F6;
+  --primary-light: #60A5FA;
+  --primary-dark: #2563EB;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0B1220;
+    --foreground: #F8FAFC;
+  }
+}
+
+body {
+  background: var(--background);
+  color: #CBD5E1;
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+}
+
+:root.light-mode body {
+  background: #FFFFFF;
+  color: #374151;
+}
+
+/* Professional Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #F8FAFC;
+}
+
+/* Heading sizes now controlled by Tailwind utility classes */
+/* h1, h2, h3 font sizes removed to allow Tailwind classes to work */
+
+p {
+  line-height: 1.6;
+  color: #CBD5E1;
+}
+
+/* Button Improvements */
+button {
+  font-weight: 500;
+  letter-spacing: -0.011em;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Input Improvements */
+input, textarea, select {
+  font-family: inherit;
+  letter-spacing: -0.011em;
+}
+
+/* Link Improvements */
+a {
+  transition: color 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Focus Visible */
+*:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 0.375rem;
+}
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Light Mode Styles */
+:root.light-mode h1,
+:root.light-mode h2,
+:root.light-mode h3,
+:root.light-mode h4,
+:root.light-mode h5,
+:root.light-mode h6 {
+  color: #111827;
+}
+
+:root.light-mode p {
+  color: #6B7280;
+}
+
+:root.light-mode a {
+  color: #3B82F6;
+}
+
+:root.light-mode button:not(.primary-btn) {
+  color: #374151;
+}
+
+:root.light-mode input,
+:root.light-mode textarea,
+:root.light-mode select {
+  background-color: #F9FAFB;
+  color: #374151;
+  border-color: #E5E7EB;
+}
+
+:root.light-mode input::placeholder,
+:root.light-mode textarea::placeholder {
+  color: #9CA3AF;
+}
+
+:root.light-mode input:focus,
+:root.light-mode textarea:focus,
+:root.light-mode select:focus {
+  background-color: #FFFFFF;
+  border-color: #3B82F6;
+}
+
+/* Light mode sidebar */
+:root.light-mode [class*="sidebar"],
+:root.light-mode [class*="Sidebar"] {
+  background-color: #F3F4F6;
+  border-color: #E5E7EB;
+  color: #374151;
+}
+
+/* Light mode header */
+:root.light-mode header {
+  background-color: #FFFFFF;
+  border-color: #E5E7EB;
+}
+
+/* Light mode cards */
+:root.light-mode [class*="card"],
+:root.light-mode [class*="Card"] {
+  background-color: #FFFFFF;
+  border-color: #E5E7EB;
+  color: #374151;
+}
+
+/* Aggressive overrides for dark theme colors in light mode */
+:root.light-mode [class*="bg-\[#0B1220\]"],
+:root.light-mode [class*="bg-\[#111C2E\]"],
+:root.light-mode [class*="bg-\[#162338\]"],
+:root.light-mode [class*="bg-\[#0F172A\]"],
+:root.light-mode [class*="bg-black"],
+:root.light-mode [class*="bg-slate"] {
+  background-color: #FFFFFF !important;
+  color: #374151 !important;
+}
+
+:root.light-mode [class*="border-white/5"],
+:root.light-mode [class*="border-white/10"],
+:root.light-mode [class*="border-\[#"] {
+  border-color: #E5E7EB !important;
+}
+
+:root.light-mode [class*="text-\[#F8FAFC\]"],
+:root.light-mode [class*="text-\[#CBD5E1\]"],
+:root.light-mode [class*="text-\[#94A3B8\]"],
+:root.light-mode [class*="text-slate"] {
+  color: #374151 !important;
+}
+
+/* Sidebar light mode */
+:root.light-mode aside {
+  background-color: #F3F4F6 !important;
+  border-color: #E5E7EB !important;
+  color: #374151 !important;
+}
+
+:root.light-mode aside a,
+:root.light-mode aside button {
+  color: #6B7280 !important;
+}
+
+:root.light-mode aside a:hover,
+:root.light-mode aside button:hover,
+:root.light-mode aside [class*="active"] {
+  background-color: #DBEAFE !important;
+  color: #3B82F6 !important;
+}
+
+/* Main content in light mode */
+:root.light-mode [role="main"],
+:root.light-mode main {
+  background-color: #FFFFFF !important;
+}
+
+/* KPI Cards light mode */
+:root.light-mode [class*="KPI"],
+:root.light-mode [class*="kpi"] {
+  background: linear-gradient(to right, rgba(255,255,255,0.9), rgba(249,250,251,0.9)) !important;
+  border-color: #E5E7EB !important;
+}
+
+/* Buttons in light mode */
+:root.light-mode button {
+  color: #374151 !important;
+}
+
+:root.light-mode button:hover {
+  background-color: #F3F4F6 !important;
+}
+
+/* Switch/Toggle colors */
+:root.light-mode [class*="from-blue"],
+:root.light-mode [class*="to-cyan"],
+:root.light-mode [class*="gradient"] {
+  /* Keep gradient colors as is for light mode */
+}
+
+/* Cursor pointer for interactive elements */
+button {
+  cursor: pointer;
+}
+
+a {
+  cursor: pointer;
+}
+
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+[role="button"] {
+  cursor: pointer;
+}

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Invoice - INV-1001 | Infodra Technologies</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .invoice {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #ccc;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 3px solid #009db9;
+        }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .header-right {
+            text-align: right;
+        }
+        .header-right h2 {
+            color: #009db9;
+            font-size: 26px;
+            margin-bottom: 4px;
+            letter-spacing: 2px;
+        }
+        .header-right p {
+            font-size: 12px;
+            color: #666;
+        }
+        .company-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #009db9;
+        }
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .info-block h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #009db9;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .info-block p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .info-block p strong { color: #333; }
+        .bill-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 30px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .bill-block {
+            width: 48%;
+        }
+        .bill-block h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #009db9;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #009db9;
+            padding-bottom: 4px;
+        }
+        .bill-block p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .bill-block p strong { color: #333; }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .items-table thead {
+            background: #009db9;
+            color: #fff;
+        }
+        .items-table th {
+            padding: 10px 12px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        .items-table td {
+            padding: 12px;
+            font-size: 13px;
+            color: #555;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .summary-section {
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 30px 20px;
+        }
+        .summary { width: 380px; }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            font-size: 13px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .summary-row .label { color: #666; }
+        .summary-row .value { color: #333; font-weight: 500; }
+        .summary-row.total {
+            margin-top: 6px;
+            padding: 10px 0;
+            border-top: 2px solid #009db9;
+            border-bottom: 2px solid #009db9;
+            font-size: 15px;
+            font-weight: 700;
+        }
+        .summary-row.total .value { color: #009db9; }
+        .footer-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 20px 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .footer-left {
+            font-size: 11px;
+            color: #999;
+            line-height: 1.8;
+        }
+        .footer-right { text-align: center; }
+        .footer-right p {
+            font-size: 11px;
+            color: #666;
+            margin-top: 4px;
+        }
+        .thank-you {
+            text-align: center;
+            padding: 15px 30px;
+            background: #009db9;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+        @media print {
+            body { background: #fff; padding: 0; }
+            .invoice { border: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice">
+        <!-- Header with Logo -->
+        <div class="header">
+            <div class="header-left">
+                <img src="frontend/public/company_logo.png" alt="Company Logo" style="max-height:70px; max-width:220px;">
+                <span class="company-name">Infodra Technologies Private Limited</span>
+            </div>
+            <div class="header-right">
+                <h2>TAX INVOICE</h2>
+                <p>INV-1001</p>
+            </div>
+        </div>
+
+        <!-- Company & Invoice Info -->
+        <div class="info-section">
+            <div class="info-block">
+                <h4>From</h4>
+                <p><strong>Infodra Technologies Private Limited</strong></p>
+                <p>Innov8 2nd Floor, RMZ Millenia Business Park, Campus 1A,<br>No 143, MGR Road, Perungudi, Chennai - 600096.</p>
+                <p><strong>GSTIN:</strong> 33AAICI3429C1ZY</p>
+                <p><strong>Email:</strong> connect@infodra.ai</p>
+                <p><strong>Web:</strong> www.infodra.ai</p>
+            </div>
+            <div class="info-block" style="text-align:right;">
+                <h4>Invoice Details</h4>
+                <p><strong>Invoice No:</strong> INV-1001</p>
+                <p><strong>Date:</strong> 15-01-2025</p>
+                <p><strong>Due Date:</strong> 14-02-2025</p>
+                <p><strong>Status:</strong> <span style="color:#28a745;font-weight:bold;">PAID</span></p>
+                <p><strong>Place of Supply:</strong> Tamil Nadu (33)</p>
+            </div>
+        </div>
+
+        <!-- Bill To / Payment Info -->
+        <div class="bill-section">
+            <div class="bill-block">
+                <h4>Bill To</h4>
+                <p><strong>Vijayalakshmi Chandra</strong></p>
+                <p>bizlead@infodra.ai</p>
+                <p><strong>GSTIN:</strong> 29AABCI1234F1Z5</p>
+            </div>
+            <div class="bill-block">
+                <h4>Payment Info</h4>
+                <p><strong>Payment Date:</strong> 15-01-2025 10:30</p>
+                <p><strong>Invoice ID:</strong> inv_abc123xyz</p>
+            </div>
+        </div>
+
+        <!-- Line Items Table -->
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th style="width:5%;">#</th>
+                    <th style="width:35%;">Description</th>
+                    <th class="text-center" style="width:12%;">HSN/SAC</th>
+                    <th class="text-center" style="width:6%;">Qty</th>
+                    <th class="text-right" style="width:14%;">Unit Price</th>
+                    <th class="text-right" style="width:14%;">Taxable Amt</th>
+                    <th class="text-right" style="width:14%;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center">1</td>
+                    <td>BizLead Professional Plan – Monthly Subscription</td>
+                    <td class="text-center">998314</td>
+                    <td class="text-center">1</td>
+                    <td class="text-right">₹9,500.00</td>
+                    <td class="text-right">₹9,500.00</td>
+                    <td class="text-right">₹11,210.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Summary -->
+        <div class="summary-section">
+            <div class="summary">
+                <div class="summary-row">
+                    <span class="label">Subtotal (Before Tax)</span>
+                    <span class="value">₹9,500.00</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">CGST @ 9%</span>
+                    <span class="value">₹855.00</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">SGST @ 9%</span>
+                    <span class="value">₹855.00</span>
+                </div>
+                <div class="summary-row">
+                    <span class="label">Total Tax (GST 18%)</span>
+                    <span class="value">₹1,710.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span class="label">TOTAL</span>
+                    <span class="value">₹11,210.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer with Signatory -->
+        <div class="footer-section">
+            <div class="footer-left">
+                <p>This is a computer-generated invoice.</p>
+                <p>For queries, contact: connect@infodra.ai</p>
+                <p>www.infodra.ai</p>
+            </div>
+            <div class="footer-right">
+                <img src="frontend/public/authorized_signatory.jpg" alt="Authorized Signatory" style="max-height:60px;">
+                <p><strong>Authorized Signatory</strong></p>
+                <p>Infodra Technologies Private Limited</p>
+            </div>
+        </div>
+
+        <div class="thank-you">
+            Thank you for choosing BizLead!
+        </div>
+    </div>
+</body>
+</html>
