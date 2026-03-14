@@ -108,9 +108,19 @@ app = FastAPI(
 
 
 # CORS Middleware
+cors_origins = settings.cors_origins_list
+# In production, also allow the custom domain variants
+if settings.is_production:
+    extra = [
+        "https://bizlead.infodra.ai",
+        "https://www.bizlead.infodra.ai",
+        "https://bizlead.vercel.app",
+    ]
+    cors_origins = list(set(cors_origins + extra))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins_list,
+    allow_origins=cors_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
