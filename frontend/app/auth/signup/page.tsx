@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import toast, { Toaster } from 'react-hot-toast';
 import { apiClient } from '@/lib/api';
@@ -27,7 +27,7 @@ const PLANS = [
 
 type SignupStep = 'account' | 'payment' | 'confirmation';
 
-export default function SignupPage() {
+function SignupContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const login = useAuthStore((state) => state.login);
@@ -446,5 +446,13 @@ export default function SignupPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SignupPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#0F172A] flex items-center justify-center"><p className="text-white">Loading...</p></div>}>
+      <SignupContent />
+    </Suspense>
   );
 }
