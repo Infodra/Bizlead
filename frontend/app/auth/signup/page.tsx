@@ -6,6 +6,8 @@ import toast, { Toaster } from 'react-hot-toast';
 import { apiClient } from '@/lib/api';
 import { useAuthStore } from '@/lib/store';
 
+export const dynamic = 'force-dynamic';
+
 const PLANS = [
   {
     id: 'starter',
