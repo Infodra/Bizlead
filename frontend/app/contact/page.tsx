@@ -41,7 +41,7 @@ export default function ContactPage() {
     
     try {
       // Send form data to backend API
-      const response = await fetch("http://localhost:8000/api/v1/contact/messages", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/v1/contact/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

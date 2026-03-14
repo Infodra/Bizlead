@@ -114,7 +114,7 @@ export default function LoginPage() {
             message: apiError?.message,
             code: apiError?.code,
           });
-          toast.error('Cannot reach server. Please ensure backend is running on http://localhost:8000');
+          toast.error('Cannot reach server. Please try again later.');
           setLoading(false);
           return;
         }
