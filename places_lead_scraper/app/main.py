@@ -117,10 +117,12 @@ app.add_middleware(
 )
 
 # Trusted Hosts Middleware (security)
-app.add_middleware(
-    TrustedHostMiddleware,
-    allowed_hosts=settings.allowed_hosts_list,
-)
+# Only enable in production with properly configured ALLOWED_HOSTS
+if settings.ALLOWED_HOSTS and settings.ALLOWED_HOSTS != "*":
+    app.add_middleware(
+        TrustedHostMiddleware,
+        allowed_hosts=["*"],  # Let the reverse proxy (Render) handle host validation
+    )
 
 
 # ============================================================================
