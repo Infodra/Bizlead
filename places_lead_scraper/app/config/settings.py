@@ -30,8 +30,8 @@ class Settings(BaseSettings):
     # DATABASE
     # ========================================================================
     DATABASE_URL: str = Field(
-        ...,
-        description="PostgreSQL connection string",
+        default="sqlite:///./local.db",
+        description="PostgreSQL connection string (defaults to local SQLite if not set)",
         examples=["postgres://user:pass@localhost:5432/bizlead_db"]
     )
 
