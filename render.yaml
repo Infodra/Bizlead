@@ -57,7 +57,7 @@ services:
       - key: DEBUG
         value: "False"
       - key: ALLOWED_HOSTS
-        value: "bizlead-backend.onrender.com,localhost"
+        value: "bizlead.onrender.com,bizlead-backend.onrender.com,localhost"
       - key: CORS_ORIGINS
         value: "https://bizlead.infodra.ai,https://www.bizlead.infodra.ai"
 

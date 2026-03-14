@@ -175,7 +175,7 @@ class Settings(BaseSettings):
     # CORS & SECURITY
     # ========================================================================
     ALLOWED_HOSTS: str = Field(
-        default="localhost,127.0.0.1",
+        default="localhost,127.0.0.1,bizlead.onrender.com",
         description="Comma-separated list of allowed hosts"
     )
 
